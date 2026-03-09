@@ -12,7 +12,7 @@ pipeline {
         stage ("Install Dependencies"){
             steps {
                 sh '''
-                . venv/bin/activate
+                . djvenv/bin/activate
                 coverage run -m pytest
                 coverage  xml
                 '''
@@ -24,7 +24,7 @@ pipeline {
             steps{
                 withSonarQubeEvn('SonarQube'){
                     sh '''
-                    . venv/bin/activate
+                    . djvenv/bin/activate
                     sonar-scanner
                     '''
                 }
